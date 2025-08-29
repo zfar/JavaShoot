@@ -1,4 +1,4 @@
-package sort.comparator;
+package zfar.org.java.shoot.comparator;
 
 import com.google.common.collect.Lists;
 import lombok.Builder;
