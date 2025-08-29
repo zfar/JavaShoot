@@ -5,7 +5,7 @@ import zfar.org.java.shoot.Utils;
 public class VolatileFlagNothing {
 //    private static volatile boolean flag = true;
     private static boolean flag = true;
-    public static void main(String[] args) throws InterruptedException{
+    public static void main(String[] args) {
         Thread runner = new Thread(() -> {
             int n = 0;
             while(flag) {
