@@ -76,10 +76,6 @@ public class StatChars {
             this.type = t;
         }
 
-        public void increCnt() {
-            this.cnt += 1;
-        }
-
         public int compareTo(Item o) {
             int ret = o.cnt - this.cnt;
             if (0 != ret) {
@@ -101,7 +97,7 @@ public class StatChars {
     }
 
     public static void stat(String input, int[][] stats) {
-        int i = 0;
+        int i;
         for (i = 0; i < input.length(); ++i) {
             char v = input.charAt(i);
             CharType t = kindOf(v);
@@ -170,9 +166,7 @@ public class StatChars {
         Collections.sort(items);
 
         // output the sorted and deduplicated chars
-        items.forEach(it -> {
-            System.out.print(it.v);
-        });
+        items.forEach(it -> System.out.print(it.v));
         System.out.println();
     }
 
