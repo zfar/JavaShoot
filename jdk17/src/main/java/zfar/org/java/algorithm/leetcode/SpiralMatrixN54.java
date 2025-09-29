@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class SpiralMatrixN54 {
-    private static int[][] directions = {{1, 0}, {0, 1}, {-1, 0}, {0, -1}};
+    private static final int[][] directions = {{1, 0}, {0, 1}, {-1, 0}, {0, -1}};
 
     private boolean getNextStep(int[][] flag, int[] pos) {
         boolean ret = false;
