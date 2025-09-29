@@ -1,7 +1,5 @@
 package zfar.org.java.algorithm.leetcode;
 
-import zfar.org.java.shoot.Shoot;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,24 +8,28 @@ public class SpiralMatrixN54 {
 
     private boolean getNextStep(int[][] flag, int[] pos) {
         boolean ret = false;
-        int i;
         int yBorder = flag.length - 1;
         int xBorder = flag[0].length - 1;
+
         int[] tmp = {0, 0};
-        for (i = 0; i < 4; ++i) {
+        int i = pos[2];
+        do {
             tmp[0] = pos[0] + directions[i][0];
             tmp[1] = pos[1] + directions[i][1];
-            if (0 > tmp[0] || tmp[0] > xBorder || 0 > tmp[1] || tmp[1] > yBorder ) {
+            if (0 > tmp[0] || tmp[0] > xBorder || 0 > tmp[1] || tmp[1] > yBorder) {
+                i = (i + 1) % directions.length;
                 continue;
             }
             if (-1 == flag[tmp[1]][tmp[0]]) {
+                i = (i + 1) % directions.length;
                 continue;
             }
             pos[0] = tmp[0];
             pos[1] = tmp[1];
             ret = true;
+            pos[2] = i;
             break;
-        }
+        } while (i != pos[2]);
 
         return ret;
     }
@@ -46,7 +48,7 @@ public class SpiralMatrixN54 {
 
         List<Integer> ret = new ArrayList<>();
         int[][] flags = new int[matrix.length][matrix[0].length];
-        int[] pos = {0, 0};
+        int[] pos = {0, 0, 0};
         do {
             process(pos, flags, matrix, ret);
         } while (getNextStep(flags, pos));
